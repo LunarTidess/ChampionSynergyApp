@@ -54,7 +54,7 @@
                 <caption>Teammates you win a lot with</caption>
                 <thead>
                     <tr>
-                        <th>Vs.</th>
+                        <th>With</th>
                         <th>Champion Name</th>
                         <th>Played</th>
                         <th>Winrate</th>
@@ -65,21 +65,30 @@
                     {           
                         <tr>
                             <td>
-                                <img src="@($"/championPictures/{teammate.ChampionName}.jpg")" width="50" height="50">
+                                <img src="@($"/championPictures/{teammate.ChampionName}.png")"
+                                     onerror="this.onerror=null; this.src='@($"/championPictures/{teammate.ChampionName}.jpg")';"
+                                     width="50"
+                                     height="50"
+                                     alt="@teammate.ChampionName">
                             </td>
+
                             <td>@teammate.ChampionName</td>
                             <td>@teammate.Played</td>
-                            <td>                                                   
-                                <div class="progress">
-                                    <div class="progress-bar" 
-                                        role="progressbar" 
-                                        style="@($"width: {(teammate.Wins * 100.0) / teammate.Played:0}%;")" 
-                                        aria-valuenow="0" 
-                                        aria-valuemin="0" 
-                                        aria-valuemax="100">
-                                        @($"{(teammate.Wins * 100.0) / teammate.Played:0}%")</div>
+                            <td>
+                                <div class="progress position-relative">
+                                    <div class="progress-bar"
+                                         role="progressbar"
+                                         style="@($"width: {(teammate.Wins * 100.0) / teammate.Played:0}%;")"
+                                         aria-valuemin="0"
+                                         aria-valuemax="100">
+                                    </div>
+
+                                    <span class="progress-label">
+                                            @($"{(teammate.Wins * 100.0) / teammate.Played:0}%")
+                                    </span>
                                 </div>
                             </td>
+
                         </tr>
                     }
                 </tbody>
@@ -91,7 +100,7 @@
                 <caption>Teammates you lose a lot with</caption>
                 <thead>
                     <tr>
-                        <th>Vs.</th>
+                        <th>With</th>
                         <th>Champion Name</th>
                         <th>Played</th>
                         <th>Winrate</th>
@@ -102,20 +111,27 @@
                     {
                         <tr>
                             <td>
-                                <img src="@($"/championPictures/{teammate.ChampionName}.jpg")" width="50" height="50">
+                                <img src="@($"/championPictures/{teammate.ChampionName}.png")"
+                                     onerror="this.onerror=null; this.src='@($"/championPictures/{teammate.ChampionName}.jpg")';"
+                                     width="50"
+                                     height="50"
+                                     alt="@teammate.ChampionName">
                             </td>
+
                             <td>@teammate.ChampionName</td>
                             <td>@teammate.Played</td>
                             <td>
-                                <div class="progress">
+                                <div class="progress position-relative">
                                     <div class="progress-bar"
                                          role="progressbar"
                                          style="@($"width: {(teammate.Wins * 100.0) / teammate.Played:0}%;")"
-                                         aria-valuenow="0"
                                          aria-valuemin="0"
                                          aria-valuemax="100">
-                                        @($"{(teammate.Wins * 100.0) / teammate.Played:0}%")
                                     </div>
+
+                                    <span class="progress-label">
+                                        @($"{(teammate.Wins * 100.0) / teammate.Played:0}%")
+                                    </span>
                                 </div>
                             </td>
                         </tr>
@@ -140,22 +156,31 @@
                 <tbody>
                     @foreach (var enemy in ViewBag.lossesByEnemies)
                     {
-                        <tr>  
+                        <tr>
                             <td>
-                                <img src="@($"/championPictures/{enemy.ChampionName}.jpg")" width="50" height="50">
+                                <img src="@($"/championPictures/{enemy.ChampionName}.png")"
+                                     onerror="this.onerror=null; this.src='@($"/championPictures/{enemy.ChampionName}.jpg")';"
+                                     width="50"
+                                     height="50"
+                                     alt="@enemy.ChampionName">
                             </td>
+
                             <td>@enemy.ChampionName</td>
                             <td>@enemy.Played</td>
                             <td>
-                                    <div class="progress">
-                                            <div class="progress-bar" 
-                                            role="progressbar" 
-                                            style="@($"width: {(enemy.Losses * 100.0) / enemy.Played:0}%;")" 
-                                            aria-valuenow="0" 
-                                            aria-valuemin="0" 
-                                            aria-valuemax="100"
-                                            >@($"{(enemy.Losses * 100.0) / enemy.Played:0}%")</div>
+                                <div class="progress position-relative">
+                                    <div class="progress-bar"
+                                         role="progressbar"
+                                         style="@($"width: {(enemy.Losses * 100.0) / enemy.Played:0}%;")"
+                                         aria-valuemin="0"
+                                         aria-valuemax="100">
                                     </div>
+
+                                    <span class="progress-label">
+                                        @($"{(enemy.Losses * 100.0) / enemy.Played:0}%")
+                                    </span>
+                                </div>
+
                             </td>
                         </tr>
                     }
@@ -181,28 +206,38 @@
                     {
                         <tr>
                             <td>
-                                    <img src="@($"/championPictures/{enemy.ChampionName}.jpg")" width="50" height="50">
+                                <img src="@($"/championPictures/{enemy.ChampionName}.png")"
+                                     onerror="this.onerror=null; this.src='@($"/championPictures/{enemy.ChampionName}.jpg")';"
+                                     width="50"
+                                     height="50"
+                                     alt="@enemy.ChampionName">
                             </td>
+
                             <td>@enemy.ChampionName</td>
                             <td>@enemy.Played</td>
                             <td>
-                                    <div class="progress">
-                                            <div class="progress-bar" 
-                                            role="progressbar" 
-                                            style="@($"width: {(enemy.Losses * 100.0) / enemy.Played:0}%;")" 
-                                            aria-valuenow="0" 
-                                            aria-valuemin="0" 
-                                            aria-valuemax="100">
-                                                @($"{(enemy.Losses * 100.0) / enemy.Played:F0}%")
-                                            </div>
+                                <div class="progress position-relative">
+                                    <div class="progress-bar"
+                                         role="progressbar"
+                                         style="@($"width: {(enemy.Losses * 100.0) / enemy.Played:0}%;")"
+                                         aria-valuemin="0"
+                                         aria-valuemax="100">
                                     </div>
+
+                                    <span class="progress-label">
+                                        @($"{(enemy.Losses * 100.0) / enemy.Played:F0}%")
+                                    </span>
+                                </div>
                             </td>
+
                         </tr>
                     }
                 </tbody>
             </table>
         </div>
     </div>
+
+
 
     <script src="https://code.jquery.com/jquery-3.2.1.slim.min.js" integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN" crossorigin="anonymous" async></script>
     <script src="https://cdn.jsdelivr.net/npm/popper.js@1.12.9/dist/umd/popper.min.js" integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q" crossorigin="anonymous" async></script>
